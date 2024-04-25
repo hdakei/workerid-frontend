@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './App.css'; // Import CSS file for styling
 
 function App() {
   const [workerId, setWorkerId] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost/worker')
-      .then(response => {
-        setWorkerId(response.data.worker_id);
-      })
-      .catch(error => {
-        console.error('Error fetching worker ID:', error);
-      });
+    // Function to generate a random 6-character ID
+    const generateWorkerId = () => {
+      return Math.random().toString(36).substr(2, 6).toUpperCase();
+    };
+
+    // Generate and set the worker ID when the component mounts
+    setWorkerId(generateWorkerId());
   }, []);
 
   return (
