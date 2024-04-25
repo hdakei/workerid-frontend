@@ -31,7 +31,7 @@ To get started with this project, follow these steps:
     docker-compose up -d --build
     ```
 
-4. Once the containers are running, you can access the React application in your web browser at [http://localhost:8080](http://localhost:8080).
+4. Once the containers are running, you can access the React application in your web browser at [http://localhost](http://localhost).
 
 ## Project Structure
 
