@@ -69,13 +69,24 @@ The project structure is as follows:
                 * **dockerfile: docker/app/Dockerfile**  The path to the Dockerfile, which contains the actual instructions for building the image.
             * **ports:**  Configures port mapping.
                 * **"8080:80"**: This tells Docker to map port 8080 on the host machine to port 80 inside the container. That means we can access the app via  http://localhost:8080 on your web browser.
-
+##
 - **src/**: React application source code.
-    -
-## Customize Configuration
 
-- **nginx.conf**: Update this file to modify Nginx server configuration.
-- **docker-compose.yml**: Adjust Docker Compose configuration as needed.
+    **Functionality**
+    
+    1. **Generates a random worker ID:**  It generates a unique 6-character random ID consisting of uppercase letters and numbers.
+    
+    2. **Displays the ID:**  It renders the generated worker ID within the component.
+    
+    **Code Explanation**
+    * **useState**:  The `useState('')` hook is used to create a state variable called `workerId`. It's initially an empty string. The `setWorkerId` function will update this variable.
+    * **useEffect**: The `useEffect` hook tells React to perform a side effect after the component renders. The empty array (`[]`) as the second argument means this effect only runs once when the component mounts.
+    * **generateWorkerId**: This is a helper function within the `useEffect` block. Here's how it creates the ID:
+       - `Math.random().toString(36)`: Generates a random decimal number and converts it into a string using base-36 notation (includes both digits 0-9 and letters A-Z).
+       - `.substr(2, 6)`: Extracts a substring starting at index 2 (to remove the '0.' prefix) and taking the next 6 characters.
+       - `.toUpperCase()`: Converts the extracted substring to uppercase.
+    * **return**: This defines the JSX structure the component will render
+##
 
 ## Contributing
 
